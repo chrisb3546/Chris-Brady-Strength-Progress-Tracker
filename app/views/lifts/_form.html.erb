@@ -1,12 +1,12 @@
-<% if @client.errors.any? %>
+<% if @lift.errors.any? %>
 <ul>
-  <% @client.errors.full_messages.each do |msg| %>
+  <% @lift.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
   <% end %>
 </ul>
 <% end %>
 
-<%=form_for (@client, @lift) do |f|%>
+<%=form_for ([@client, @lift]) do |f|%>
 <%=f.label :name%>
 <%=f.text_field :name%>
 <br>
@@ -20,7 +20,7 @@
 <%=f.text_field :ROM %>
 <br>
 <%=f.label :date %>
-<%=f.datetime_select :start_year 2017%>
+<%=f.datetime_select :date, start_year: 2017%>
 <br>
 <%=f.label :notes%>
 <%=f.text_area :notes %>

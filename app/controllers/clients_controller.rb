@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
     before_action :find_client, only: [:show, :edit, :update, :destroy]
 
     def index
-        @client = Client.all
+        @clients = Client.all
     end
 
     def show

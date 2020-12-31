@@ -1,8 +1,8 @@
 class LiftsController < ApplicationController
-    
+    before_action :find_lift, only: [:show, :edit, :update, :destroy]
         def index
-            if params[:client_id] && @client = Client.find_by(id: params[]:id])
-                @lift = @client.lifts.all
+            if params[:client_id] && @client = Client.find_by(id: params[:client_id])
+                @lifts = @client.lifts.all
             end
         end
     
@@ -10,14 +10,15 @@ class LiftsController < ApplicationController
         end
     
         def new
-            if params[:client_id] && @client = Client.find_by(id: params[]:id])
-                @lift = @client.lift.build
+            if params[:client_id] && @client = Client.find_by(id: params[:client_id])
+                
+                @lift = @client.lifts.build
             end
         end
     
         def create
-            if params[:client_id] && @client = Client.find_by(id: params[]:id])
-                @lift = @client.lift.build(lift_params)
+            if params[:client_id] && @client = Client.find_by(id: params[:client_id])
+                @lift = @client.lifts.build(lift_params)
             end
             if @lift.save
                 redirect_to client_lift_path(@lift.client, @lift)
@@ -36,12 +37,17 @@ class LiftsController < ApplicationController
         end
     
         def destroy
+            @lift.destroy
+            redirect_to client_path(@lift.client)
         end
     
         private
     
         def lift_params
             params.require(:lift).permit(:client_id, :name, :weight, :ROM, :repetitions, :date, :notes)
+        end
+        def find_lift
+            @lift = Lift.find_by(id: params[:id])
         end
     
 

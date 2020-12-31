@@ -1,4 +1,4 @@
 <h1> Client index </h1>
-<%@client.each do |c|%>
+<%@clients.each do |c|%>
     <%= link_to c.name , client_path(c) %>
 <%end%>

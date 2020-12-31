@@ -1,2 +1,2 @@
-Client Show Page
-<%=@client.name%>
+<h1><%=@client.name%></h1>
+<%= link_to 'add lift', new_client_lift_path(@client.id) %>
