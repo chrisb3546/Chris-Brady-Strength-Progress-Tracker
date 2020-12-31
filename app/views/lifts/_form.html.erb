@@ -1,0 +1,28 @@
+<% if @client.errors.any? %>
+<ul>
+  <% @client.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%=form_for (@client, @lift) do |f|%>
+<%=f.label :name%>
+<%=f.text_field :name%>
+<br>
+<%=f.label :weight %>
+<%=f.number_field :weight%>
+<br>
+<%=f.label :repetitions %>
+<%=f.number_field :repetitions %>
+<br>
+<%=f.label :ROM %>
+<%=f.text_field :ROM %>
+<br>
+<%=f.label :date %>
+<%=f.datetime_select :start_year 2017%>
+<br>
+<%=f.label :notes%>
+<%=f.text_area :notes %>
+<%=f.submit%>
+<%end %>
