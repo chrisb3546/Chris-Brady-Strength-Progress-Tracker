@@ -1,2 +1,6 @@
 <h1><%=@client.name%></h1>
+<%@client.lifts.each do |lift|%>
+<%= link_to lift.name, client_lift_path(@client, lift) %>
+<%end%>
+<br>
 <%= link_to 'add lift', new_client_lift_path(@client.id) %>

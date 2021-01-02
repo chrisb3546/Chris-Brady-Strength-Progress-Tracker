@@ -1,3 +1,10 @@
-<h1><%=@lift.name%></h1>
-
+<h1><%=@lift.name%> <%=@lift.ROM%></h1>
+<ul>
+    <li><%=@lift.weight%>lbs</li>
+    <li>For <%=@lift.repetitions%></li>
+    <li>On <%=@lift.date%></li>
+</ul>
+<h2>Notes about this lift<h2>
+<%=@lift.notes%>
+<br>
 <%= link_to 'Delete Lift', client_lift_path(@lift.client_id, @lift.id), method: "delete" %>
