@@ -26,10 +26,11 @@ class LiftsController < ApplicationController
         end
     
         def edit
+        
         end
     
         def update
-            if @lift.update(@lift_params)
+            if @lift.update(lift_params)
                 redirect_to client_lift_path(@lift.client, @lift)
             else
                 render :edit 
@@ -48,6 +49,7 @@ class LiftsController < ApplicationController
         end
         def find_lift
             @lift = Lift.find_by(id: params[:id])
+            @client = @lift.client
         end
     
 

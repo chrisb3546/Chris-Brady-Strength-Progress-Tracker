@@ -8,3 +8,7 @@
 <%=@lift.notes%>
 <br>
 <%= link_to 'Delete Lift', client_lift_path(@lift.client_id, @lift.id), method: "delete" %>
+<br>
+<%= link_to 'Add New Lift', new_client_lift_path(@lift.client_id, @lift) %>
+<br>
+<%= link_to 'Edit Lift', edit_client_lift_path(@lift.client_id, @lift) %>
